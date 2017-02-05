@@ -12,8 +12,11 @@ namespace CognitiveServices
     /// </summary>
     public class IntelligentService
     {
-
-        string key1 = "";
+        private Config _config;
+        public IntelligentService(Config config)
+        {
+            _config = config;            
+        }
 
     }
 }
