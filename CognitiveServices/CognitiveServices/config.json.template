@@ -1,6 +1,6 @@
 ﻿{
   "LUIS": {
-    "Key1": "",
-    "Key2": ""
+    "APIkey": "",
+    "APIEndpoint": "https://westus.api.cognitive.microsoft.com/luis/v1"
   }
 }

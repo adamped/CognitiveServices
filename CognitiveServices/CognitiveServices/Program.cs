@@ -21,7 +21,13 @@ namespace CognitiveServices
 
             var config = JsonConvert.DeserializeObject<Config>(configFile);
 
-            var luis = new IntelligentService(config);
+            // TODO: Enter your appId here
+
+            var appId = "";
+
+            var luis = new IntelligentService(appId, config);
+
+            luis.Resolve("Open passenger door").Wait();
 
             Console.WriteLine("Program end. Press enter to exit.");
             Console.ReadLine();

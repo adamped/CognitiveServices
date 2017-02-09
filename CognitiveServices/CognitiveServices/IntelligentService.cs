@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,9 +14,22 @@ namespace CognitiveServices
     public class IntelligentService
     {
         private Config _config;
-        public IntelligentService(Config config)
+        private string _appId;
+        public IntelligentService(string appId, Config config)
         {
-            _config = config;            
+            _appId = appId;
+            _config = config;
+        }
+
+        public async Task Resolve(string text)
+        {
+            var client = new HttpClient();
+
+            var uri = $"{_config.LUIS.APIEndpoint}/apps/{_appId}?subscription-key={_config.LUIS.APIKey}&q={System.Web.HttpUtility.UrlEncode(text)}&verbose=true";
+
+            var response = await client.GetAsync(uri);
+
+            Console.WriteLine(await response.Content.ReadAsStringAsync());
         }
 
     }
